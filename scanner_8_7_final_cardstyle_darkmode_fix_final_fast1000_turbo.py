@@ -359,10 +359,10 @@ st.markdown("""
   min-height:auto !important;
 }
 .scanner-panel-label{ color:#bfdbfe !important; -webkit-text-fill-color:#bfdbfe !important; font-size:0.78rem; text-transform:uppercase; font-weight:800; letter-spacing:0.04em; margin-bottom:0.45rem; }
-.scanner-panel-row{ margin:0.24rem 0; font-size:0.96rem; color:#f8fafc !important; -webkit-text-fill-color:#f8fafc !important; }
-.scanner-panel-row span{ color:#93c5fd !important; -webkit-text-fill-color:#93c5fd !important; font-size:0.84rem; }
+.scanner-panel-row{ margin:0.32rem 0; font-size:0.96rem; color:#f8fafc !important; -webkit-text-fill-color:#f8fafc !important; }
+.scanner-row-label{ color:#93c5fd !important; -webkit-text-fill-color:#93c5fd !important; font-size:0.84rem; display:block; margin-bottom:2px; }
+.scanner-row-value, .scanner-row-value b{ color:#ffffff !important; -webkit-text-fill-color:#ffffff !important; }
 .scanner-panel, .scanner-panel *{ color:#f8fafc !important; -webkit-text-fill-color:#f8fafc !important; }
-.scanner-panel-row b{ color:#ffffff !important; -webkit-text-fill-color:#ffffff !important; }
 .scanner-event-strip{ margin-top:10px; background:linear-gradient(90deg, rgba(37,99,235,0.18), rgba(14,165,233,0.08)) !important; border:1px solid rgba(96,165,250,0.24) !important; color:#dbeafe !important; -webkit-text-fill-color:#dbeafe !important; border-radius:12px; padding:0.7rem 0.85rem; font-size:0.9rem; }
 .scanner-meta-caption{ color:#94a3b8 !important; -webkit-text-fill-color:#94a3b8 !important; font-size:0.84rem; margin:0.2rem 0 0.65rem 0.15rem; }
 label, .stMarkdown, .stMarkdown p, .stTextInput label, .stSelectbox label, .stNumberInput label,
@@ -376,9 +376,90 @@ h1, h2, h3, h4, h5, h6 { color:#0f172a !important; -webkit-text-fill-color:#0f17
   h1, h2, h3, h4, h5, h6 { color:#f8fafc !important; -webkit-text-fill-color:#f8fafc !important; }
 }
 @media (max-width: 900px){
-  .scanner-grid{ grid-template-columns:1fr; }
-  .scanner-card-top{ flex-direction:column; }
-  .scanner-score-wrap{ text-align:left; }
+  html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"], [data-testid="stSidebar"]{
+    background:#f8fafc !important;
+    background-image:none !important;
+    color:#0f172a !important;
+  }
+  .block-container{ padding-top:0.35rem !important; }
+  .ts-header, .info-card, div[data-testid="stMetric"], div[data-testid="stDataFrame"], div[data-testid="stExpander"]{
+    background:#ffffff !important;
+    background-image:none !important;
+    color:#0f172a !important;
+    border-color:rgba(15,23,42,0.10) !important;
+  }
+  .ts-title, .ts-sub, .ts-kicker,
+  label, .stMarkdown, .stMarkdown p, .stTextInput label, .stSelectbox label, .stNumberInput label,
+  [data-testid="stWidgetLabel"], [data-testid="stCaptionContainer"], .stCaption,
+  div[data-testid="stMetricLabel"] *, div[data-testid="stMetricValue"] *,
+  h1, h2, h3, h4, h5, h6 {
+    color:#0f172a !important; -webkit-text-fill-color:#0f172a !important;
+  }
+  input, textarea, .stTextInput input, .stNumberInput input,
+  div[data-baseweb="input"] input, div[data-baseweb="select"] input,
+  div[data-baseweb="select"] > div, div[data-baseweb="base-input"] > div,
+  div[data-baseweb="input"] > div {
+    background:#ffffff !important; color:#0f172a !important; -webkit-text-fill-color:#0f172a !important;
+  }
+  .ts-header{
+    padding:12px 12px 14px 12px !important;
+    border-radius:18px !important;
+    position:relative !important;
+    z-index:1 !important;
+  }
+  .ts-title{ font-size:1.15rem !important; line-height:1.02 !important; }
+  .ts-sub{ font-size:0.72rem !important; }
+  .scanner-card{ padding:12px 12px 10px 12px !important; border-radius:18px !important; }
+  .scanner-card-top{ flex-direction:row !important; align-items:flex-start !important; gap:8px !important; }
+  .scanner-title{ font-size:0.96rem !important; }
+  .scanner-subtitle{ font-size:0.72rem !important; }
+  .scanner-links{ margin-top:0.45rem !important; }
+  .scanner-links a{ font-size:0.68rem !important; margin-right:8px !important; }
+  .scanner-grid{ grid-template-columns:1fr 1fr !important; gap:8px !important; margin-top:10px !important; }
+  .scanner-panel{ padding:8px 9px !important; border-radius:14px !important; }
+  .scanner-panel-label{ font-size:0.62rem !important; margin-bottom:0.22rem !important; }
+  .scanner-panel-row{ display:grid !important; grid-template-columns:1fr auto !important; column-gap:6px !important; align-items:start !important; font-size:0.60rem !important; line-height:1.15 !important; margin:0.10rem 0 !important; }
+  .scanner-row-label{ font-size:0.56rem !important; margin-bottom:0 !important; }
+  .scanner-row-value, .scanner-row-value b{ font-size:0.62rem !important; text-align:right !important; }
+  .scanner-score-wrap{ text-align:right !important; min-width:72px !important; }
+  .scanner-score-label{ font-size:0.56rem !important; }
+  .scanner-score-value{ font-size:1.05rem !important; }
+  .scanner-signal-label, .scanner-trend-badge{ transform:scale(0.92); transform-origin:left center; }
+  .scanner-event-strip{ font-size:0.68rem !important; padding:0.5rem 0.6rem !important; border-radius:10px !important; background:#e0f2fe !important; color:#0f172a !important; -webkit-text-fill-color:#0f172a !important; border-color:#93c5fd !important; }
+  .scanner-event-strip *{ color:#0f172a !important; -webkit-text-fill-color:#0f172a !important; }
+  .scanner-meta-caption{ font-size:0.62rem !important; margin-left:0.05rem !important; color:#475569 !important; -webkit-text-fill-color:#475569 !important; }
+  .stSelectbox label, .stNumberInput label, .stTextInput label, .stToggle label, .stSlider label,
+  [data-testid="stWidgetLabel"], [data-testid="stMarkdownContainer"], [data-testid="stMarkdownContainer"] p,
+  [data-testid="stMarkdownContainer"] h1, [data-testid="stMarkdownContainer"] h2, [data-testid="stMarkdownContainer"] h3,
+  .stCaption, [data-testid="stCaptionContainer"], .stSubheader, h1, h2, h3, h4, h5, h6 {
+    color:#0f172a !important; -webkit-text-fill-color:#0f172a !important;
+  }
+  div[data-baseweb="select"] *, div[data-baseweb="base-input"] *, div[data-baseweb="input"] *,
+  .stSelectbox *, .stNumberInput *, .stTextInput *, .stToggle *, .stExpander *, summary, details {
+    color:#0f172a !important; -webkit-text-fill-color:#0f172a !important;
+  }
+  div[data-testid="stExpander"] summary, div[data-testid="stExpander"] summary *{
+    color:#0f172a !important; -webkit-text-fill-color:#0f172a !important; font-weight:700 !important;
+  }
+  div.stButton > button{
+    min-height:42px !important;
+    position:relative !important;
+    z-index:9999 !important;
+    pointer-events:auto !important;
+  }
+  [data-testid="stHorizontalBlock"]{ gap:0.35rem !important; }
+  .mobile-portfolio-banner{ display:flex; flex-direction:column; gap:6px; margin:0.45rem 0 0.7rem 0; }
+  .mobile-portfolio-list{ display:none !important; }
+  div[data-testid="stDataFrame"]{ display:none !important; }
+  .mobile-portfolio-banner .mobile-portfolio-item{ box-shadow:0 6px 16px rgba(15,23,42,0.06); }
+  .mobile-portfolio-item{ background:#ffffff; border:1px solid rgba(15,23,42,0.10); border-radius:14px; padding:10px 12px; }
+  .mobile-portfolio-top{ display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .mobile-portfolio-symbol{ font-weight:900; color:#0f172a; }
+  .mobile-portfolio-reason{ font-size:0.78rem; color:#64748b; margin-top:4px; }
+}
+@media (max-width: 520px){
+  .scanner-grid{ grid-template-columns:1fr 1fr !important; }
+  .scanner-panel{ min-width:0 !important; }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -1647,8 +1728,8 @@ def render_card(row, key_suffix):
         ("Trendkanal", f'<b>{row["Trendkanal"]}</b>'),
     ]
 
-    left_html = ''.join([f'<div class="scanner-panel-row"><span style="color:var(--card-muted);">{label}</span><br>{value}</div>' for label, value in left_rows])
-    right_html = ''.join([f'<div class="scanner-panel-row"><span style="color:var(--card-muted);">{label}</span><br>{value}</div>' for label, value in right_rows])
+    left_html = ''.join([f'<div class="scanner-panel-row"><span class="scanner-row-label">{label}</span><span class="scanner-row-value">{value}</span></div>' for label, value in left_rows])
+    right_html = ''.join([f'<div class="scanner-panel-row"><span class="scanner-row-label">{label}</span><span class="scanner-row-value">{value}</span></div>' for label, value in right_rows])
     score_html = fmt_num(final_score) if final_score is not None else "-"
 
     trend_badge_style = (
@@ -1723,6 +1804,48 @@ def render_card(row, key_suffix):
         if st.button("👁️ Auf Watchlist", key=f'watch_{key_suffix}_{row["Symbol"]}', use_container_width=True):
             add_to_watchlist(row); st.success(f'{row["Symbol"]} zur Watchlist hinzugefügt.'); st.rerun()
 
+def portfolio_action_badge(action: str) -> str:
+    a = str(action or "").strip()
+    low = a.lower()
+    if "verkauf" in low:
+        bg = "#dc2626"
+        border = "#b91c1c"
+    elif "aufstock" in low or "nachkauf" in low:
+        bg = "#16a34a"
+        border = "#15803d"
+    else:
+        bg = "#f59e0b"
+        border = "#d97706"
+    return (
+        f'<span style="display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;'
+        f'border-radius:999px;background:{bg};border:1px solid {border};color:#fff;font-size:12px;font-weight:900;">{a}</span>'
+    )
+
+def render_portfolio_signal_banner(df):
+    if df is None or df.empty:
+        return
+    top = df.drop_duplicates(subset=["Symbol"]).head(3).copy()
+    chips = []
+    for _, r in top.iterrows():
+        chips.append(f'<div class="mobile-portfolio-item"><div class="mobile-portfolio-top"><div class="mobile-portfolio-symbol">{r["Symbol"]}</div>{portfolio_action_badge(r.get("Aktion", ""))}</div><div class="mobile-portfolio-reason">{r.get("Grund", "")}</div></div>')
+    st.markdown('<div class="mobile-portfolio-banner">' + ''.join(chips) + '</div>', unsafe_allow_html=True)
+
+def render_portfolio_signal_cards(df):
+    if df is None or df.empty:
+        return
+    cards = []
+    for _, r in df.head(5).iterrows():
+        cards.append(
+            '<div class="mobile-portfolio-item">'
+            '<div class="mobile-portfolio-top">'
+            f'<div class="mobile-portfolio-symbol">{r["Symbol"]}</div>'
+            f'{portfolio_action_badge(r.get("Aktion", ""))}'
+            '</div>'
+            f'<div class="mobile-portfolio-reason">{r.get("Grund", "")}</div>'
+            '</div>'
+        )
+    st.markdown('<div class="mobile-portfolio-list">' + ''.join(cards) + '</div>', unsafe_allow_html=True)
+
 if "refresh_counter" not in st.session_state:
     st.session_state.refresh_counter = 0
 if "account_size_value" not in st.session_state:
@@ -1762,6 +1885,7 @@ if not portfolio_signal_df.empty:
     urgent = portfolio_signal_df[portfolio_signal_df["Aktion"].isin(["SOFORT VERKAUFEN","Verkaufen"])]
     text = "Es gibt dringende Verkaufssignale. Bitte zuerst prüfen." if not urgent.empty else "Aktuell überwiegend Halten / Gewinne sichern / Aufstocken."
     st.markdown(f'<div class="info-card {"info-red" if not urgent.empty else "info-blue"}"><b>Portfolio zuerst:</b> {text}</div>', unsafe_allow_html=True)
+    render_portfolio_signal_banner(portfolio_signal_df)
     tmp = portfolio_signal_df.head(5).copy()
     tmp["Aktuell Anzeige"] = tmp.apply(lambda r: fmt_dual_price(r["Aktuell €"], r["Symbol"]), axis=1)
     tmp["Stop Anzeige"] = tmp.apply(lambda r: fmt_dual_price(r["Stop €"], r["Symbol"]), axis=1)
